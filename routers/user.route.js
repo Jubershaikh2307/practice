@@ -33,7 +33,7 @@ User.post("/login", async (req, res) => {
         const verified = bcrypt.compareSync(password, user.password);
         if(verified){
             const token=await jwt.sign({email},"secret");
-            return res.send({token:token})
+            return res.send({token:token,success:1})
         }else{
             return res.send("Check Username and Password");
         }
